@@ -5,7 +5,9 @@ const jsdom = require('jsdom');
 const usuariosGet = async (req, res = response) => {
 
         // Abrimos una instancia del puppeteer y accedemos a la url de google
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+  args: ['--no-sandbox', '--disable-setuid-sandbox'],
+});
         const page = await browser.newPage();
     
         const response = await page.goto('https://www.banregio.com/divisas.php');
